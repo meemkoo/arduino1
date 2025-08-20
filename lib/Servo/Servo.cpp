@@ -67,7 +67,6 @@ static void initISR(timer16_Sequence_t timer)
     TCCR1B = _BV(CS11);     // set prescaler of 8
     TCNT1 = 0;              // clear the timer count
 
-    // here if not ATmega8 or ATmega128
     TIFR1 |= _BV(OCF1A);     // clear any pending interrupts
     TIMSK1 |=  _BV(OCIE1A) ; // enable the output compare interrupt
   }
@@ -131,17 +130,6 @@ void Servo::detach()
   if(isTimerActive(timer) == false) {
     finISR(timer);
   }
-}
-
-void Servo::write(int value)
-{
-  if(value < MIN_PULSE_WIDTH)
-  {  // treat values less than 544 as angles in degrees (valid values in microseconds are handled as microseconds)
-    if(value < 0) value = 0;
-    if(value > 180) value = 180;
-    value = map(value, 0, 180, SERVO_MIN(),  SERVO_MAX());
-  }
-  this->writeMicroseconds(value);
 }
 
 void Servo::writeMicroseconds(int value)

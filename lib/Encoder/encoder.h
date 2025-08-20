@@ -22,8 +22,8 @@ typedef struct {
     signed short buffer[BUFFERSIZE];
 } Encoder;
 
-Encoder*          encoder_new      (int pwmPin);
-void              encoder_update   (Encoder* encoder);
-void              encoder_zero     (Encoder* encoder);
+Encoder*     encoder_new      (int pwmPin);
+void         encoder_update   (Encoder* encoder);
+void         encoder_zero     (Encoder* encoder);
 
 #endif
