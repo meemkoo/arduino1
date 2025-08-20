@@ -5,6 +5,6 @@ void panic2(const char message[]) {
   while (true) {
     Serial.print("ERROR\t\t");
     Serial.println(message);
-    delay(50);
+    delay(1000);
   }
 }
